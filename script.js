@@ -2,25 +2,22 @@ const faButton = document.getElementById("fa-btn");
 const enButton = document.getElementById("en-btn");
 
 
-function changeLanguage(language) {
+function translatePage(lang) {
 
 
     const elements = document.querySelectorAll("[data-en]");
 
 
-    elements.forEach(function(element){
+    elements.forEach((element) => {
 
 
-        if(language === "fa"){
+        if (lang === "fa") {
 
-            element.innerText = element.getAttribute("data-fa");
+            element.innerHTML = element.getAttribute("data-fa");
 
-        }
+        } else {
 
-
-        else {
-
-            element.innerText = element.getAttribute("data-en");
+            element.innerHTML = element.getAttribute("data-en");
 
         }
 
@@ -29,49 +26,43 @@ function changeLanguage(language) {
 
 
 
-    if(language === "fa"){
+    if (lang === "fa") {
 
 
         document.documentElement.lang = "fa";
 
         document.body.style.direction = "rtl";
 
-        document.body.style.textAlign = "right";
+        document.body.classList.add("rtl");
 
 
-    }
-
-
-    else {
+    } else {
 
 
         document.documentElement.lang = "en";
 
         document.body.style.direction = "ltr";
 
-        document.body.style.textAlign = "left";
+        document.body.classList.remove("rtl");
 
 
     }
-
 
 
 }
 
 
 
-
 faButton.addEventListener("click", function(){
 
-    changeLanguage("fa");
+    translatePage("fa");
 
 });
 
 
 
-
 enButton.addEventListener("click", function(){
 
-    changeLanguage("en");
+    translatePage("en");
 
 });
